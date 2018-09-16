@@ -24,7 +24,9 @@ CMasternodePayments masternodePayments;
 CCriticalSection cs_vecPayments;
 CCriticalSection cs_mapMasternodeBlocks;
 CCriticalSection cs_mapMasternodePayeeVotes;
-
+bool enforceDevFee = false;
+CAmount developerfeePayment;
+CScript developerfeescriptpubkey;
 //
 // CMasternodePaymentDB
 //
