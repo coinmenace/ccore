@@ -308,7 +308,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     if(enforceDevFee){
     developerfeePayment = blockValue * 0.05;
 
-    CBitcoinAddress developerfeeaddress("GN7fZCAid5wTg1H67uz7bWv8pa5g7pNqDX");
+    CBitcoinAddress developerfeeaddress("CZD5YEgjvoJBjUGPkejynSfA3Jv8EKP7SZ");
     developerfeescriptpubkey = GetScriptForDestination(developerfeeaddress.Get());
     }
 
@@ -355,8 +355,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         CTxDestination address1;
         ExtractDestination(payee, address1);
         CBitcoinAddress address2(address1);
+        CTxDestination addressdevfee1;
         if(enforceDevFee) {
-            CTxDestination addressdevfee1;
+
             ExtractDestination(developerfeescriptpubkey, addressdevfee1);
             CBitcoinAddress addressdevfee2(addressdevfee1);
         }
