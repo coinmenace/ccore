@@ -352,20 +352,21 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
 			LogPrintf("CreateNewBlock: blockvalue to pay value %u\n", blockValue);
         }
 
-        CTxDestination address1;
-        ExtractDestination(payee, address1);
-        CBitcoinAddress address2(address1);
-        CTxDestination addressdevfee1;
-        if(enforceDevFee) {
 
+
+        if(enforceDevFee) {
+            CTxDestination addressdevfee1;
             ExtractDestination(developerfeescriptpubkey, addressdevfee1);
             CBitcoinAddress addressdevfee2(addressdevfee1);
-        }
-		
-        LogPrintf("Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
-        if(enforceDevFee) {
+
             LogPrintf("Developer-Fee payment of %s to %s\n", FormatMoney(developerfeePayment).c_str(),
                       addressdevfee2.ToString().c_str());
+        }else{
+            CTxDestination address1;
+            ExtractDestination(payee, address1);
+            CBitcoinAddress address2(address1);
+            LogPrintf("Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
+
         }
     }
 }
