@@ -32,6 +32,8 @@ std::string GetRequiredPaymentsString(int nBlockHeight);
 bool IsBlockValueValid(const CBlock& block, int64_t nExpectedValue, CAmount nMinted);
 void FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake);
 bool enforceDevFee = false;
+extern CAmount developerfeePayment;
+extern CScript developerfeescriptpubkey;
 void DumpMasternodePayments();
 
 /** Save Masternode Payment Data (mnpayments.dat)
